@@ -1,6 +1,7 @@
 export class Cart {
     cartItems = [];
     removedCartItems = [];
+    isCheckout = false;
 
     constructor() {
         this.cartItems = [];
@@ -20,6 +21,18 @@ export class Cart {
         this.removedCartItems.forEach(removeCartItem => {
             console.log(removeCartItem)
         })
+    }
+
+
+    equal(cart) {
+        if (this.cartItems === cart.cartItems) {
+            return true;
+        }
+        return false;
+    }
+
+    checkOut(){
+        this.isCheckout = true;
     }
 
 }
