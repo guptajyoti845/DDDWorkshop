@@ -74,7 +74,7 @@ describe("Cart Test", () => {
 
     });
 
-    it('should create Order( with Products) when Cart is checked out',  () => {
+    it('should create Order( with Products) when Cart is checked out', () => {
         const cart = new Cart();
         const iPad = new Product('ipad', new Price('INR', 100));
         const heroInkPen = new Product('heroInkPen', new Price('INR', 100));
@@ -85,6 +85,21 @@ describe("Cart Test", () => {
 
         const order = CheckoutService.createOrder(cart);
         expect(order.products).toHaveLength(5)
+
+    });
+
+    it('should calculate Total cost for the Order', function () {
+        const cart = new Cart();
+
+        const iPad = new Product('ipad', new Price('INR', 100), 10.0);
+        const iPadCartItem = new CartItem(iPad, 2);
+
+        cart.addCartItem(iPadCartItem)
+
+        const order = CheckoutService.createOrder(cart);
+        const totalCost = order.calculateTotalCost();
+
+        expect(totalCost).toEqual(540.2);
 
     });
 })

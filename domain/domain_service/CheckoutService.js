@@ -8,7 +8,7 @@ export class CheckoutService {
         cart.checkOut();
         cart.cartItems.forEach((cartItem) => {
             for (let i = 0; i < cartItem.quantity; i++) {
-                products.push(new Product(cartItem.product.name, cartItem.product.price))
+                products.push(new Product(cartItem.product.name, cartItem.product.price, cartItem.product.weight))
             }
         })
 
